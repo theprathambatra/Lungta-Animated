@@ -3,210 +3,159 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#090909" />
-  <title>LUNGTA - Made of Momentum</title>
+  <meta name="theme-color" content="#050505" />
+  <title>LUNGTA | Made of Momentum</title>
   <meta name="description" content="LUNGTA performance apparel. Made of Momentum." />
-  <link rel="preload" as="image" href="assets/alpine-model-4k.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/hero-wind-horse-4k.webp" fetchpriority="high" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="preloader" id="preloader" aria-hidden="true">
-    <div class="preloader-grid"></div>
-    <img src="assets/lungta-wordmark.png" class="preloader-logo" alt="" />
-    <div class="preloader-row">
-      <span>INITIALISING MOMENTUM</span><span id="loaderPercent">00</span>
+    <div class="preloader-inner">
+      <img src="assets/lungta-wordmark.png" alt="" class="preloader-word" />
+      <div class="preloader-meta"><span>MADE OF MOMENTUM.</span><span id="loaderPercent">00</span></div>
+      <div class="preloader-track"><i id="loaderBar"></i></div>
     </div>
-    <div class="preloader-line"><i id="loaderBar"></i></div>
   </div>
 
-  <canvas id="field" class="field" aria-hidden="true"></canvas>
-  <div class="noise" aria-hidden="true"></div>
   <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
   <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
-  <header class="nav" id="nav">
-    <a class="nav-mark magnetic" href="#home" aria-label="LUNGTA home"><img src="assets/apex.png" alt="LUNGTA" /></a>
-    <nav class="nav-links" aria-label="Primary navigation">
-      <a class="active" href="#home">HOME</a>
-      <a href="#about">ABOUT</a>
-      <a href="#features">FEATURES</a>
-      <a href="#system">SYSTEM</a>
-      <a href="#drop">DROP 01</a>
+  <header class="site-header" id="siteHeader">
+    <a class="brand magnetic" href="#home" aria-label="LUNGTA home">
+      <img src="assets/lungta-wordmark.png" alt="LUNGTA" />
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#second-skin">Second Skin</a>
+      <a href="#wind">Wind</a>
+      <a href="#horse">Wind Horse</a>
+      <a href="#identity">Identity</a>
     </nav>
-    <div class="nav-status">
-      <span class="status-light"></span>
-      <span>LIVE / <b id="clock">00:00:00</b></span>
-    </div>
     <button class="menu-toggle magnetic" id="menuToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
   </header>
 
   <aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <div class="mobile-menu-inner">
-      <a href="#home">HOME <span>01</span></a>
-      <a href="#about">ABOUT <span>02</span></a>
-      <a href="#features">FEATURES <span>03</span></a>
-      <a href="#system">SYSTEM <span>04</span></a>
-      <a href="#drop">DROP 01 <span>05</span></a>
-    </div>
+    <div class="mobile-menu-top"><img src="assets/lungta-wordmark.png" alt="LUNGTA" /></div>
+    <nav>
+      <a href="#home"><span>01</span>Home</a>
+      <a href="#second-skin"><span>02</span>Second Skin</a>
+      <a href="#wind"><span>03</span>Wind</a>
+      <a href="#horse"><span>04</span>Wind Horse</a>
+      <a href="#identity"><span>05</span>Identity</a>
+    </nav>
     <div class="mobile-menu-foot">LUNGTA / MADE OF MOMENTUM.</div>
   </aside>
 
   <main>
-    <section class="hero section" id="home" data-section="home">
-      <div class="hero-outline hero-outline-a"></div>
-      <div class="hero-outline hero-outline-b"></div>
-      <div class="hero-grid"></div>
-      <img class="hero-word" src="assets/lungta-wordmark.png" alt="" aria-hidden="true" />
-
-      <div class="hero-orbit" id="heroOrbit" aria-hidden="true">
-        <div class="orbit-line orbit-line-a"></div>
-        <div class="orbit-line orbit-line-b"></div>
-        <div class="orbit-node n1"></div><div class="orbit-node n2"></div><div class="orbit-node n3"></div>
+    <section class="hero theme-dark" id="home" data-header="dark">
+      <div class="hero-media-wrap" id="heroMediaWrap">
+        <img class="hero-media" id="heroMedia" src="assets/hero-wind-horse-4k.webp" alt="LUNGTA athlete riding the Wind Horse above an alpine landscape" />
       </div>
-
-      <div class="product-stage" id="productStage">
-        <div class="product-shell" id="productShell">
-          <div class="product-screen">
-            <img src="assets/alpine-model-4k.webp" alt="Woman wearing LUNGTA performance apparel in an alpine landscape" />
-            <div class="screen-scan"></div>
-            <div class="screen-ui top"><span>LUNGTA / 01</span><span>00° 52' N</span></div>
-            <div class="screen-ui bottom"><span>SECOND SKIN</span><span>ACTIVE</span></div>
-          </div>
-          <div class="product-bezel"></div>
-          <div class="product-apex"><img src="assets/apex.png" alt="" /></div>
-          <div class="product-pip"></div>
-          <div class="product-edge e1"></div><div class="product-edge e2"></div>
-        </div>
+      <div class="hero-vignette"></div>
+      <div class="hero-copy reveal-block">
+        <p class="eyebrow">LUNGTA / DROP 01</p>
+        <h1>Made of<br><em>Momentum.</em></h1>
+        <a class="text-cta magnetic" href="#second-skin"><span>Discover Second Skin</span><b>↘</b></a>
       </div>
-
-      <div class="hero-copy">
-        <p>Performance apparel engineered from movement <span>- built to disappear once you start moving.</span></p>
-        <a class="cut-btn magnetic" href="#about"><span>EXPLORE LUNGTA</span><i>↘</i></a>
-      </div>
-      <div class="scroll-hint"><span>SCROLL TO MOVE</span><i></i></div>
+      <div class="hero-corner"><span>PERFORMANCE / 2026</span><span>SCROLL TO MOVE</span></div>
     </section>
 
-    <section class="about section" id="about" data-section="about">
-      <div class="section-kicker"><span>ABOUT THE SYSTEM</span><span>01 / 05</span></div>
-      <div class="about-layout">
-        <h1>A performance system designed around <em>wind, body and momentum.</em></h1>
-        <div class="about-copy">
-          <p>LUNGTA begins with the force you cannot hold. Wind shapes the line, the body and the way performance should feel: light, responsive and never still.</p>
-          <p>The body already knows how to adapt. Every layer is designed to move with it, without adding noise between you and the environment.</p>
+    <section class="intro theme-light" id="second-skin" data-header="light">
+      <div class="intro-kicker reveal-line"><span>01 / SECOND SKIN</span><span>PERFORMANCE, WITHOUT THE NOISE.</span></div>
+      <div class="intro-grid">
+        <div class="intro-title reveal-block">
+          <p class="eyebrow dark">Designed around the body</p>
+          <h2>A layer that disappears once you start moving.</h2>
         </div>
-      </div>
-      <div class="about-ticker" aria-hidden="true"><div>LUNGTA / NOTHING STILL / MADE OF MOMENTUM / LUNGTA / NOTHING STILL / MADE OF MOMENTUM /</div></div>
-      <div class="about-media">
-        <img src="assets/wind-flow.webp" alt="LUNGTA wind flow concept" class="wind-fabric" />
-        <div class="about-stat s1"><b>04</b><span>WAY STRETCH</span></div>
-        <div class="about-stat s2"><b>00</b><span>UNNECESSARY NOISE</span></div>
-        <div class="about-stat s3"><b>01</b><span>SECOND SKIN SYSTEM</span></div>
-      </div>
-    </section>
-
-    <section class="features section" id="features" data-section="features">
-      <div class="section-kicker"><span>FEATURES</span><span>02 / 05</span></div>
-      <div class="feature-head">
-        <h2>The most complete performance layer in its class.</h2>
-        <p>Every property is tuned to support movement without asking for attention.</p>
-      </div>
-      <div class="feature-console" id="featureConsole">
-        <div class="console-grid"></div>
-        <div class="console-glow"></div>
-        <div class="feature-column left">
-          <article data-feature="0"><span>01</span><div><h3>Second-Skin Fit</h3><p>Close structure that follows the body without restriction.</p></div></article>
-          <article data-feature="1"><span>03</span><div><h3>Four-Way Stretch</h3><p>Elastic recovery tuned for training, travel and daily movement.</p></div></article>
-          <article data-feature="2"><span>05</span><div><h3>Breathability</h3><p>Air passes where heat builds, keeping the layer composed.</p></div></article>
-          <article data-feature="3"><span>07</span><div><h3>Low-Profile Seams</h3><p>Clean joins reduce friction and visual interruption.</p></div></article>
-        </div>
-        <div class="feature-model" id="featureModel">
-          <div class="feature-model-frame">
-            <img src="assets/alpine-model-4k.webp" alt="LUNGTA Second Skin set" />
-            <div class="feature-reticle"><i></i><i></i><i></i><i></i></div>
-            <div class="feature-readout"><span>SECOND SKIN</span><b>01</b></div>
-          </div>
-        </div>
-        <div class="feature-column right">
-          <article data-feature="4"><span>02</span><div><h3>Moisture Control</h3><p>Built to move sweat away from the body and dry fast.</p></div></article>
-          <article data-feature="5"><span>04</span><div><h3>Shape Retention</h3><p>Maintains line and structure through repeated movement.</p></div></article>
-          <article data-feature="6"><span>06</span><div><h3>Minimal Weight</h3><p>Performance without bulk, hardware or unnecessary layers.</p></div></article>
-          <article data-feature="7"><span>08</span><div><h3>Quiet Identity</h3><p>Branding stays precise and restrained, never decorative.</p></div></article>
-        </div>
-      </div>
-      <div class="feature-mobile-list">
-        <div>01 / SECOND-SKIN FIT</div><div>02 / MOISTURE CONTROL</div><div>03 / FOUR-WAY STRETCH</div><div>04 / SHAPE RETENTION</div>
-        <div>05 / BREATHABILITY</div><div>06 / MINIMAL WEIGHT</div><div>07 / LOW-PROFILE SEAMS</div><div>08 / QUIET IDENTITY</div>
-      </div>
-    </section>
-
-    <section class="mode section" id="system" data-section="system">
-      <div class="mode-panel">
-        <div class="section-kicker"><span>ENTER MOMENTUM MODE</span><span>03 / 05</span></div>
-        <div class="mode-title"><h2>One system.<br>Nothing still.</h2><p>Built as a single performance language from the garment to the objects around it.</p></div>
-        <div class="mode-visual">
-          <img src="assets/wind-horse-mark.webp" alt="LUNGTA Wind Horse" />
-          <div class="radar r1"></div><div class="radar r2"></div><div class="radar r3"></div>
-          <div class="scan-vertical"></div>
-        </div>
-        <div class="mode-cards">
-          <article><div class="mode-icon">↗</div><h3>Responsive Construction</h3><p>Structure follows momentum instead of resisting it.</p><span>01</span></article>
-          <article><div class="mode-icon">◌</div><h3>Thermal Balance</h3><p>Ventilation and coverage calibrated for shifting conditions.</p><span>02</span></article>
-          <article><div class="mode-icon">⌁</div><h3>Clean Contact</h3><p>Low-friction seams and a smooth interior reduce distraction.</p><span>03</span></article>
-          <article><div class="mode-icon">△</div><h3>Directional Identity</h3><p>The Apex and Wind Horse carry one idea: movement with direction.</p><span>04</span></article>
+        <div class="intro-copy reveal-block">
+          <p>LUNGTA is built around a simple idea: performance should feel instinctive. Every line, seam and surface is considered to move with the body instead of competing with it.</p>
+          <p>Second Skin is close, responsive and quiet. Nothing decorative. Nothing slowing you down.</p>
         </div>
       </div>
     </section>
 
-    <section class="precision section" id="precision" data-section="precision">
-      <div class="section-kicker"><span>PRECISION IN EVERY COMPONENT</span><span>04 / 05</span></div>
-      <div class="precision-head"><h2>Built as one system.<br><span>Read layer by layer.</span></h2></div>
-      <div class="exploded" id="exploded">
-        <div class="exploded-grid"></div>
-        <div class="exploded-core">
-          <img src="assets/brand-applications.webp" alt="LUNGTA brand applications" />
-          <div class="core-mask"></div>
+    <section class="wind theme-light" id="wind" data-header="light">
+      <div class="wind-visual reveal-media" id="windVisual">
+        <div class="wind-field"></div>
+        <img src="assets/wind-flow.webp" alt="LUNGTA wind flow concept" id="windImage" />
+      </div>
+      <div class="wind-copy reveal-block">
+        <p class="eyebrow dark">02 / WIND</p>
+        <h2>Born from a force<br>you cannot hold.</h2>
+        <p>Wind shapes LUNGTA's movement language: light, directional and always in motion. The identity is not built around speed for spectacle, but momentum with purpose.</p>
+        <a class="underline-link magnetic" href="#horse">Meet the Wind Horse</a>
+      </div>
+    </section>
+
+    <section class="nature theme-dark" data-header="dark">
+      <div class="nature-media reveal-media" id="natureMedia">
+        <img src="assets/alpine-model-4k.webp" alt="Athlete wearing LUNGTA performance apparel in an alpine landscape" />
+      </div>
+      <div class="nature-overlay"></div>
+      <div class="nature-copy reveal-block">
+        <p class="eyebrow">BODY / ENVIRONMENT</p>
+        <h2>Nature sets<br>the standard.</h2>
+        <p>Adapt to the environment. Keep the body free. Carry only what movement needs.</p>
+      </div>
+    </section>
+
+    <section class="product theme-light" data-header="light">
+      <div class="product-sticky">
+        <div class="product-image reveal-media" id="productTilt">
+          <img src="assets/alpine-model-4k.webp" alt="LUNGTA Second Skin set" />
         </div>
-        <div class="exploded-part p1"><b>01</b><span>CONTOUR TOP</span></div>
-        <div class="exploded-part p2"><b>02</b><span>SCULPT LEGGING</span></div>
-        <div class="exploded-part p3"><b>03</b><span>SECOND-SKIN KNIT</span></div>
-        <div class="exploded-part p4"><b>04</b><span>APEX MARK</span></div>
-        <div class="exploded-part p5"><b>05</b><span>LOW-PROFILE SEAMS</span></div>
-        <div class="exploded-part p6"><b>06</b><span>MOMENTUM SYSTEM</span></div>
+      </div>
+      <div class="product-story">
+        <article class="story-step reveal-block">
+          <span>01</span>
+          <p class="eyebrow dark">SECOND SKIN / CONTOUR TOP</p>
+          <h3>Structure without restriction.</h3>
+          <p>A close performance layer designed to follow the upper body cleanly through training, travel and everyday movement.</p>
+        </article>
+        <article class="story-step reveal-block">
+          <span>02</span>
+          <p class="eyebrow dark">SECOND SKIN / SCULPT LEGGING</p>
+          <h3>Hold the line. Keep moving.</h3>
+          <p>Supportive stretch, clean recovery and a reduced visual language designed to work as one system with the top.</p>
+        </article>
+        <article class="story-step reveal-block">
+          <span>03</span>
+          <p class="eyebrow dark">THE SYSTEM</p>
+          <h3>Nothing added without a reason.</h3>
+          <p>The collection is composed as one movement system. Weight, friction and distraction are treated as design problems to remove.</p>
+        </article>
       </div>
     </section>
 
-    <section class="specs section" id="specs" data-section="specs">
-      <div class="section-kicker"><span>SPECIFICATIONS</span><span>05 / 05</span></div>
-      <div class="specs-head"><h2>Everything performance needs.<br><span>Nothing it doesn't.</span></h2></div>
-      <div class="spec-grid">
-        <article><div class="spec-symbol stretch"></div><span>01</span><h3>4-Way Stretch</h3><p>Multi-directional elasticity with controlled recovery.</p></article>
-        <article><div class="spec-symbol drop"></div><span>02</span><h3>Fast Dry</h3><p>Moisture transport designed for repeated movement.</p></article>
-        <article><div class="spec-symbol feather"></div><span>03</span><h3>Lightweight</h3><p>Minimal bulk for a close, silent fit.</p></article>
-        <article><div class="spec-symbol wind"></div><span>04</span><h3>Airflow</h3><p>Breathable construction mapped around heat zones.</p></article>
-        <article><div class="spec-symbol seam"></div><span>05</span><h3>Low Friction</h3><p>Reduced seam profile for cleaner contact with skin.</p></article>
-        <article><div class="spec-symbol hold"></div><span>06</span><h3>Shape Hold</h3><p>Stable structure designed to return to line.</p></article>
+    <section class="horse theme-light" id="horse" data-header="light">
+      <div class="horse-copy reveal-block">
+        <p class="eyebrow dark">03 / THE WIND HORSE</p>
+        <h2>Momentum<br>given a form.</h2>
+        <p>The Wind Horse carries the central idea of LUNGTA: power without heaviness, speed without chaos, movement with direction.</p>
+      </div>
+      <div class="horse-stage reveal-media" id="horseStage">
+        <div class="horse-halo"></div>
+        <img src="assets/wind-horse-mark.webp" alt="LUNGTA Wind Horse" id="horseImage" />
+        <div class="horse-label top">WIND / BODY / DIRECTION</div>
+        <div class="horse-label bottom">LUNGTA / MADE OF MOMENTUM.</div>
       </div>
     </section>
 
-    <section class="drop section" id="drop" data-section="drop">
-      <div class="drop-grid"></div>
-      <img class="drop-horse" src="assets/wind-horse-mark.webp" alt="" />
-      <div class="drop-lockup"><img src="assets/lungta-lockup.png" alt="LUNGTA Made of Momentum" /></div>
-      <div class="drop-copy">
-        <span>DROP 01 / SECOND SKIN</span>
-        <h2>Made to move beyond.</h2>
-        <p>Join the first release list. This demo form works locally and shows the completed state without requiring a backend.</p>
-        <form id="waitlistForm" class="waitlist-form">
-          <label class="sr-only" for="email">Email</label>
-          <input id="email" type="email" placeholder="YOU@EMAIL.COM" required autocomplete="email" />
-          <button class="magnetic" type="submit" aria-label="Join drop list">↗</button>
-        </form>
-        <div class="form-message" id="formMessage" role="status"></div>
+    <section class="identity theme-dark" id="identity" data-header="dark">
+      <div class="identity-head reveal-block">
+        <p class="eyebrow">04 / IDENTITY IN MOTION</p>
+        <h2>Quiet enough to disappear.<br><em>Distinct enough to remain.</em></h2>
       </div>
-      <footer>
-        <span>ALL RIGHTS RESERVED, ©LUNGTA 2026</span>
-        <div><a href="#home">BACK TO TOP</a><a href="#">INSTAGRAM</a><a href="#">CONTACT</a></div>
-      </footer>
+      <div class="identity-frame reveal-media" id="identityFrame">
+        <img src="assets/brand-applications.webp" alt="LUNGTA brand applications" />
+      </div>
+    </section>
+
+    <section class="final theme-dark" data-header="dark">
+      <div class="final-apex reveal-block"><img src="assets/apex.png" alt="LUNGTA Apex mark" /></div>
+      <div class="final-word reveal-block"><img src="assets/lungta-lockup.png" alt="LUNGTA Made of Momentum" /></div>
+      <a class="final-cta magnetic" href="#home"><span>Return to top</span><b>↑</b></a>
+      <footer><span>© LUNGTA 2026</span><span>MADE OF MOMENTUM.</span></footer>
     </section>
   </main>
 
