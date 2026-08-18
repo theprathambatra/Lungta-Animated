@@ -23,6 +23,7 @@
   window.addEventListener('load', () => { clearInterval(tick); finishLoad(); }, { once:true });
   setTimeout(() => { if(load < 100){ clearInterval(tick); finishLoad(); } }, 2300);
 
+  // Scroll reveals: Neoconda-inspired motion behaviour, applied to LUNGTA's own layout.
   const revealEls = document.querySelectorAll('.reveal-block,.reveal-line,.reveal-media');
   if(reduced){ revealEls.forEach(el => el.classList.add('in-view')); }
   else {
@@ -32,6 +33,7 @@
     revealEls.forEach(el => io.observe(el));
   }
 
+  // Header hide/reveal on direction.
   const header = document.getElementById('siteHeader');
   let lastY = window.scrollY;
   window.addEventListener('scroll', () => {
@@ -41,20 +43,48 @@
     lastY = y;
   }, { passive:true });
 
+  // Hero continuity: the same LUNGTA hero physically travels into the next section.
+  // Neoconda is used only as the motion reference; the visual remains entirely LUNGTA.
+  const heroSequence = document.getElementById('heroSequence');
   const heroMediaWrap = document.getElementById('heroMediaWrap');
   const heroMedia = document.getElementById('heroMedia');
+  const heroCopy = document.getElementById('heroCopy');
+  const heroCorner = document.getElementById('heroCorner');
+  const heroVignette = document.getElementById('heroVignette');
   const natureMedia = document.getElementById('natureMedia');
   const identityFrame = document.getElementById('identityFrame');
+  const clamp = (n,min=0,max=1) => Math.min(max,Math.max(min,n));
+  const mix = (a,b,t) => a + (b-a)*t;
+  const ease = t => 1 - Math.pow(1-clamp(t),3);
   let ticking = false;
   const updateScrollMotion = () => {
     ticking = false;
     if(reduced) return;
     const y = window.scrollY;
     const vh = window.innerHeight;
-    if(heroMediaWrap){
-      const p = Math.min(1, y / vh);
-      heroMediaWrap.style.transform = `translate3d(0,${p * 7}vh,0)`;
-      heroMedia.style.transform = `scale(${1.04 + p * .08})`;
+    if(heroMediaWrap && heroSequence){
+      const seqTop = heroSequence.getBoundingClientRect().top + y;
+      const localY = y - seqTop;
+      // Hold the hero first, then carry it through the section boundary.
+      const raw = (localY - vh * .52) / (vh * .88);
+      const p = ease(raw);
+      const mobile = window.innerWidth <= 640;
+      const topEnd = mobile ? 16 : 14;
+      const sideEnd = mobile ? 5 : 6;
+      const bottomEnd = mobile ? 30 : 22;
+      heroMediaWrap.style.setProperty('--hero-top', `${mix(0,topEnd,p)}vh`);
+      heroMediaWrap.style.setProperty('--hero-right', `${mix(0,sideEnd,p)}vw`);
+      heroMediaWrap.style.setProperty('--hero-bottom', `${mix(0,bottomEnd,p)}vh`);
+      heroMediaWrap.style.setProperty('--hero-left', `${mix(0,sideEnd,p)}vw`);
+      heroMediaWrap.style.setProperty('--hero-radius', `${mix(0,mobile ? 3 : 5,p)}px`);
+      heroMediaWrap.style.setProperty('--hero-sheen', `${clamp((p-.45)/.55) * .22}`);
+      heroMediaWrap.style.filter = `drop-shadow(0 ${mix(0,34,p)}px ${mix(0,70,p)}px rgba(0,0,0,${mix(0,.2,p)}))`;
+      heroMedia.style.setProperty('--hero-img-scale', `${mix(mobile ? 1.08 : 1.04, mobile ? 1.18 : 1.09,p)}`);
+      heroMedia.style.setProperty('--hero-img-y', `${mix(0,mobile ? -1.8 : -1.2,p)}vh`);
+      if(heroVignette) heroVignette.style.setProperty('--hero-vignette', `${1 - clamp(raw*1.5)}`);
+      const textP = ease((localY - vh*.30)/(vh*.48));
+      if(heroCopy){heroCopy.style.opacity = `${1-textP}`;heroCopy.style.transform = `translate3d(0,${-textP*42}px,0)`;}
+      if(heroCorner){heroCorner.style.opacity = `${1-textP}`;heroCorner.style.transform = `translate3d(0,${textP*18}px,0)`;}
     }
     if(natureMedia){
       const r = natureMedia.parentElement.getBoundingClientRect();
@@ -73,6 +103,7 @@
   }, { passive:true });
   updateScrollMotion();
 
+  // Pointer-responsive Wind object.
   const wind = document.getElementById('windVisual');
   if(wind && !reduced){
     wind.addEventListener('pointermove', e => {
@@ -89,6 +120,7 @@
     });
   }
 
+  // Wind Horse inertia/tilt.
   const horse = document.getElementById('horseStage');
   if(horse && !reduced){
     let tx=0,ty=0,cx=0,cy=0,inside=false;
@@ -106,6 +138,7 @@
     animateHorse();
   }
 
+  // Product image perspective follows pointer without changing LUNGTA visual design.
   const product = document.getElementById('productTilt');
   if(product && !reduced){
     product.addEventListener('pointermove', e => {
@@ -117,6 +150,7 @@
     product.addEventListener('pointerleave',()=> product.style.transform='perspective(1200px) rotateY(0deg) rotateX(0deg)');
   }
 
+  // Magnetic interaction.
   document.querySelectorAll('.magnetic').forEach(el => {
     if(reduced) return;
     el.addEventListener('pointermove', e => {
@@ -127,6 +161,7 @@
     el.addEventListener('pointerleave',()=>{ el.style.transform='translate(0,0)'; });
   });
 
+  // Custom cursor.
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
   if(dot && ring && !reduced && window.matchMedia('(pointer:fine)').matches){
@@ -139,6 +174,7 @@
     });
   }
 
+  // Mobile menu.
   const menuToggle=document.getElementById('menuToggle');
   const mobileMenu=document.getElementById('mobileMenu');
   const setMenu=open=>{
